@@ -129,6 +129,10 @@ step "3/9 Pacotes e Docker"
 export DEBIAN_FRONTEND=noninteractive
 apt-get update -q >/dev/null
 apt-get install -yq ca-certificates curl git python3 iptables openssl iproute2 cron >/dev/null
+# Relógio: o Debian mínimo pode vir sem NTP nenhum (nem systemd-timesyncd). Sem ele, a hora do ACS deriva.
+if ! command -v chronyc >/dev/null && ! systemctl cat systemd-timesyncd >/dev/null 2>&1; then
+  apt-get install -yq chrony >/dev/null && ok "chrony instalado (NTP)"
+fi
 ok "pacotes base"
 if ! command -v docker >/dev/null || ! docker compose version >/dev/null 2>&1; then
   install -m 0755 -d /etc/apt/keyrings

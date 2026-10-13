@@ -83,7 +83,7 @@ export function TimeTab() {
 
   const list = servers.map((x) => x.trim()).filter(Boolean);
   const changedTz = !!s && tz !== s.timezone;
-  const changedServers = !!s && (!s.managed || list.join(" ") !== s.servers.join(" "));
+  const changedServers = !!s && (!s.managed || !s.daemon || list.join(" ") !== s.servers.join(" "));
 
   const save = async () => {
     setBusy(true);
@@ -132,7 +132,9 @@ export function TimeTab() {
             </div>
           </div>
         </div>
-        {!s.synchronized && (
+        {!s.daemon ? (
+          <div className="mt-4"><Alert tone="warn">O servidor não tem serviço de NTP: a hora não se mantém certa sozinha. Clique em <b>Gravar</b> abaixo e o Zenie instala o chrony e passa a sincronizar com os servidores da lista.</Alert></div>
+        ) : !s.synchronized && (
           <div className="mt-4"><Alert tone="warn">O relógio não está sincronizado: teste os servidores abaixo (a porta UDP 123 precisa estar liberada até eles).</Alert></div>
         )}
       </Card>

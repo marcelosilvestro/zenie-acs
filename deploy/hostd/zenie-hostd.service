@@ -1,4 +1,4 @@
-# Instalado pelo install.sh/update.sh em /etc/systemd/system (ZENIE_DIR é substituído pelo caminho real).
+# Instalado pelo install.sh/update.sh em /etc/systemd/system (@ZENIE_DIR@ é substituído pelo caminho real).
 # Agente do host para Configurações > Redes e túnel Cloudflare (deploy/hostd/zenie-hostd.py).
 [Unit]
 Description=Zenie: agente do host (rede e túnel Cloudflare)
@@ -6,8 +6,8 @@ After=network.target docker.service
 
 [Service]
 Type=simple
-Environment=ZENIE_DIR=ZENIE_DIR
-ExecStart=/usr/bin/python3 ZENIE_DIR/deploy/hostd/zenie-hostd.py
+Environment=ZENIE_DIR=@ZENIE_DIR@
+ExecStart=/usr/bin/python3 @ZENIE_DIR@/deploy/hostd/zenie-hostd.py
 Restart=always
 RestartSec=3
 

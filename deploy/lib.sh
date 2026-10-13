@@ -139,7 +139,7 @@ ensure_ui_password() {
 
 # Agente do host (Configurações > Redes e túnel Cloudflare): serviço systemd zenie-hostd, socket em /run/zenie.
 install_hostd() {
-  sed "s#ZENIE_DIR#$ZENIE_DIR#g" "$ZENIE_DIR/deploy/hostd/zenie-hostd.service" >/etc/systemd/system/zenie-hostd.service
+  sed "s#@ZENIE_DIR@#$ZENIE_DIR#g" "$ZENIE_DIR/deploy/hostd/zenie-hostd.service" >/etc/systemd/system/zenie-hostd.service
   systemctl daemon-reload
   systemctl enable zenie-hostd >/dev/null 2>&1
   systemctl restart zenie-hostd

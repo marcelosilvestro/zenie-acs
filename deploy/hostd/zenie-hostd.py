@@ -664,7 +664,21 @@ def valid_servers(servers):
     return list(dict.fromkeys(out))
 
 
+def install_chrony():
+    """Debian mínimo pode vir sem NTP nenhum: instala o chrony (o instalador novo já faz isso)."""
+    env = {**os.environ, "DEBIAN_FRONTEND": "noninteractive"}
+    for cmd in (["apt-get", "update", "-qq"], ["apt-get", "install", "-y", "-qq", "chrony"]):
+        r = subprocess.run(cmd, capture_output=True, text=True, timeout=300, env=env)
+        if r.returncode != 0:
+            raise Refused(f"não foi possível instalar o chrony: {(r.stderr or r.stdout).strip()[-200:]}")
+    run(["systemctl", "enable", "--now", "chrony"], check=False)
+    log("chrony instalado (o servidor não tinha serviço de NTP)")
+
+
 def apply_ntp(daemon, servers):
+    if daemon is None:
+        install_chrony()
+        daemon = ntp_daemon()
     if daemon == "chrony":
         CHRONY_ZENIE.parent.mkdir(parents=True, exist_ok=True)
         CHRONY_ZENIE.write_text("# Gerado pelo Zenie (Configurações > Horário)\n" + "".join(f"server {s} iburst\n" for s in servers))
@@ -682,7 +696,7 @@ def apply_ntp(daemon, servers):
         run(["timedatectl", "set-ntp", "true"], check=False)
         run(["systemctl", "restart", "systemd-timesyncd"])
     else:
-        raise Refused("o servidor não tem chrony nem systemd-timesyncd: instale um deles (apt install chrony)")
+        raise Refused("o servidor não tem chrony nem systemd-timesyncd e não foi possível instalar o chrony")
 
 
 def time_set(req):
