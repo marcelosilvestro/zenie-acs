@@ -1,0 +1,13 @@
+{
+  "channel": "refresh-wifi",
+  "configurations": [
+    {
+      "args": null,
+      "name": "refresh-wifi",
+      "type": "provision"
+    }
+  ],
+  "events": {},
+  "precondition": "",
+  "weight": 0
+}

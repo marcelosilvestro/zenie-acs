@@ -1,0 +1,11 @@
+OLT-c320_1#show onu running config gpon-onu_1/1/16:20
+pon-onu-mng gpon-onu_1/1/16:20
+  service PROVEDOR_DADOS gemport 1 vlan 1016
+  wan-ip 1 mode pppoe username cliente20 password xxxxxxxx vlan-profile PROVEDOR_VLAN1016 host 1
+  pppoe 1 nat enable user cliente20 password xxxxxxxx
+  firewall enable level low anti-hack disable
+  tr069-mgmt 1 state unlock
+  tr069-mgmt 1 acs http://10.0.0.10:7547 validate basic username zenie password senhaacs
+  security-mgmt 1 state enable mode forward protocol web https
+  wan 1 service internet
+!

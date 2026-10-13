@@ -1,0 +1,962 @@
+{
+ "InternetGatewayDevice": {
+  "X_ZTE-COM_EasyMesh": {
+   "_object": true,
+   "_writable": false,
+   "AL_MAC": {
+    "_object": false,
+    "_type": "xsd:string",
+    "_value": "02:00:00:00:00:04",
+    "_writable": false
+   },
+   "Enable": {
+    "_object": false,
+    "_type": "xsd:boolean",
+    "_value": true,
+    "_writable": true
+   },
+   "MeshAgent": {
+    "Backhaul": {
+     "MediaType": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "PHYRate": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketErrorsRX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketErrorsTX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketsRX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketsTX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "SignalStrength": {
+      "_object": false,
+      "_type": "xsd:int",
+      "_value": 0,
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "Controller": {
+     "AL_MAC": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "02:00:00:00:00:04",
+      "_writable": false
+     },
+     "Manufacturer": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "ZTE",
+      "_writable": false
+     },
+     "ModelName": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "F6201B",
+      "_writable": false
+     },
+     "SerialNumber": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "SN0001",
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "HopToController": {
+     "_object": false,
+     "_type": "xsd:unsignedInt",
+     "_value": 0,
+     "_writable": false
+    },
+    "Parent": {
+     "AL_MAC": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "Manufacturer": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "ModelName": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "SerialNumber": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "Status": {
+     "_object": false,
+     "_type": "xsd:unsignedInt",
+     "_value": 1,
+     "_writable": false
+    },
+    "Version": {
+     "_object": false,
+     "_type": "xsd:string",
+     "_value": "MAP v1.0",
+     "_writable": false
+    },
+    "_object": true,
+    "_writable": true
+   },
+   "NetworkTopology": {
+    "Agent": {
+     "1": {
+      "AL_MAC": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "02:00:00:00:00:04",
+       "_writable": false
+      },
+      "Active": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "1",
+       "_writable": false
+      },
+      "Backhaul": {
+       "DownlinkAdaptRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "DownlinkPHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "MediaType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "PHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketErrorsRX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketErrorsTX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketsRX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketsTX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 0,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "UplinkAdaptRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "UplinkPHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "HopToController": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 0,
+       "_writable": false
+      },
+      "Manufacturer": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "ZTE",
+       "_writable": false
+      },
+      "ModelName": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "F6201B",
+       "_writable": false
+      },
+      "Parent": {
+       "AL_MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:04",
+        "_writable": false
+       },
+       "Manufacturer": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "ZTE",
+        "_writable": false
+       },
+       "ModelName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "F6201B",
+        "_writable": false
+       },
+       "SerialNumber": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "SN0001",
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "STA": {
+       "_object": true,
+       "_writable": true
+      },
+      "SerialNumber": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "SN0001",
+       "_writable": false
+      },
+      "Status": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 1,
+       "_writable": false
+      },
+      "TotalSTANumberOfEntries": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 1,
+       "_writable": false
+      },
+      "Version": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "MAP v1.0",
+       "_writable": false
+      },
+      "_object": true,
+      "_writable": true
+     },
+     "2": {
+      "AL_MAC": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "02:00:00:00:00:04",
+       "_writable": false
+      },
+      "Active": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "1",
+       "_writable": false
+      },
+      "Backhaul": {
+       "DownlinkAdaptRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "DownlinkPHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "MediaType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "PHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketErrorsRX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketErrorsTX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketsRX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketsTX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 0,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "UplinkAdaptRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "UplinkPHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "HopToController": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 0,
+       "_writable": false
+      },
+      "Manufacturer": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "ZTE",
+       "_writable": false
+      },
+      "ModelName": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "F6201B",
+       "_writable": false
+      },
+      "Parent": {
+       "AL_MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:04",
+        "_writable": false
+       },
+       "Manufacturer": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "ZTE",
+        "_writable": false
+       },
+       "ModelName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "F6201B",
+        "_writable": false
+       },
+       "SerialNumber": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "SN0001",
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "STA": {
+       "_object": true,
+       "_writable": true
+      },
+      "SerialNumber": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "SN0001",
+       "_writable": false
+      },
+      "Status": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 1,
+       "_writable": false
+      },
+      "TotalSTANumberOfEntries": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 1,
+       "_writable": false
+      },
+      "Version": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "MAP v1.0",
+       "_writable": false
+      },
+      "_object": true,
+      "_writable": true
+     },
+     "_object": true,
+     "_writable": true
+    },
+    "Controller": {
+     "AL_MAC": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "02:00:00:00:00:04",
+      "_writable": false
+     },
+     "Manufacturer": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "ZTE",
+      "_writable": false
+     },
+     "ModelName": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "F6201B",
+      "_writable": false
+     },
+     "RxRate": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "STA": {
+      "1": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "ETH",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:01",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.0.99",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:01",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 0,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "_object": true,
+      "_writable": true
+     },
+     "SerialNumber": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "SN0001",
+      "_writable": false
+     },
+     "TotalSTANumberOfEntries": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 1,
+      "_writable": false
+     },
+     "TxRate": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "Version": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "MAP v1.0",
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "TotalAgentNumberOfEntries": {
+     "_object": false,
+     "_type": "xsd:unsignedInt",
+     "_value": 2,
+     "_writable": false
+    },
+    "_object": true,
+    "_writable": false
+   },
+   "RoamingThreshold2G": {
+    "_object": false,
+    "_type": "xsd:int",
+    "_value": -60,
+    "_writable": true
+   },
+   "RoamingThreshold5G": {
+    "_object": false,
+    "_type": "xsd:int",
+    "_value": -70,
+    "_writable": true
+   },
+   "Role": {
+    "_object": false,
+    "_type": "xsd:unsignedInt",
+    "_value": 1,
+    "_writable": false
+   },
+   "Version": {
+    "_object": false,
+    "_type": "xsd:string",
+    "_value": "MAP v1.0",
+    "_writable": false
+   }
+  },
+  "LANDevice": {
+   "1": {
+    "Hosts": {
+     "Host": {
+      "1": {
+       "Active": {
+        "_object": false,
+        "_type": "xsd:boolean",
+        "_value": true,
+        "_writable": false
+       },
+       "AddressSource": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "Static",
+        "_writable": false
+       },
+       "ClientID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "IPAddress": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.0.99",
+        "_writable": false
+       },
+       "InterfaceType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "Ethernet",
+        "_writable": false
+       },
+       "Layer2Interface": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "InternetGatewayDevice.LANDevice.1.LANEthernetInterfaceConfig.2",
+        "_writable": false
+       },
+       "LeaseTimeRemaining": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 0,
+        "_writable": false
+       },
+       "MACAddress": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:01",
+        "_writable": false
+       },
+       "UserClassID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "VendorClassID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "X_ZTE-COM_LatestOnlineTime": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "2026-10-09T13:56:24",
+        "_writable": false
+       },
+       "X_ZTE-COM_OnlineDuration": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1105",
+        "_writable": false
+       },
+       "X_ZTE-COM_RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 46,
+        "_writable": false
+       },
+       "X_ZTE-COM_TotalBytesReceived": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "6751",
+        "_writable": false
+       },
+       "X_ZTE-COM_TotalBytesSent": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "661",
+        "_writable": false
+       },
+       "X_ZTE-COM_TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 14,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "4": {
+       "Active": {
+        "_object": false,
+        "_type": "xsd:boolean",
+        "_value": true,
+        "_writable": false
+       },
+       "AddressSource": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "DHCP",
+        "_writable": false
+       },
+       "ClientID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "atadevice02:00:00:00:00:02",
+        "_writable": false
+       },
+       "IPAddress": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.0.100",
+        "_writable": false
+       },
+       "InterfaceType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "802.11",
+        "_writable": false
+       },
+       "Layer2Interface": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "InternetGatewayDevice.LANDevice.1.WLANConfiguration.10",
+        "_writable": false
+       },
+       "LeaseTimeRemaining": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 8395,
+        "_writable": false
+       },
+       "MACAddress": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:02",
+        "_writable": false
+       },
+       "UserClassID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "VendorClassID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "MULTIAP_SLAVE",
+        "_writable": false
+       },
+       "X_ZTE-COM_LatestOnlineTime": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "2026-10-09T14:10:40",
+        "_writable": false
+       },
+       "X_ZTE-COM_OnlineDuration": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "249",
+        "_writable": false
+       },
+       "X_ZTE-COM_RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "X_ZTE-COM_TotalBytesReceived": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "X_ZTE-COM_TotalBytesSent": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "X_ZTE-COM_TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "5": {
+       "Active": {
+        "_object": false,
+        "_type": "xsd:boolean",
+        "_value": true,
+        "_writable": false
+       },
+       "AddressSource": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "DHCP",
+        "_writable": false
+       },
+       "ClientID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "atadevice02:00:00:00:00:03",
+        "_writable": false
+       },
+       "IPAddress": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.0.101",
+        "_writable": false
+       },
+       "InterfaceType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "802.11",
+        "_writable": false
+       },
+       "Layer2Interface": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "InternetGatewayDevice.LANDevice.1.WLANConfiguration.10",
+        "_writable": false
+       },
+       "LeaseTimeRemaining": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 8399,
+        "_writable": false
+       },
+       "MACAddress": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:03",
+        "_writable": false
+       },
+       "UserClassID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "VendorClassID": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "MULTIAP_SLAVE",
+        "_writable": false
+       },
+       "X_ZTE-COM_LatestOnlineTime": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "2026-10-09T14:10:43",
+        "_writable": false
+       },
+       "X_ZTE-COM_OnlineDuration": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "246",
+        "_writable": false
+       },
+       "X_ZTE-COM_RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "X_ZTE-COM_TotalBytesReceived": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "X_ZTE-COM_TotalBytesSent": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "",
+        "_writable": false
+       },
+       "X_ZTE-COM_TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "_object": true,
+      "_writable": false
+     }
+    }
+   }
+  }
+ }
+}

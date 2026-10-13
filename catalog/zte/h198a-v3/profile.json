@@ -1,0 +1,136 @@
+{
+  "id": "zte/h198a-v3",
+  "vendor": "ZTE",
+  "model": "ZXHN H198A V3.0",
+  "commercialName": "ZTE ZXHN H198A V3.0",
+  "kind": "router",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "ZXHN H198A V3.0",
+      "H198A V3.0",
+      "ZXHN H198A"
+    ]
+  },
+  "wifi": {
+    "generation": 5,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 4,
+    "wan": "Ethernet"
+  },
+  "notes": "Sem Bandsteering; sem velocidade de porta LAN; sem CPU/memória. Rádios desligados no equipamento do teste. Firmware V3.0.0C6_MUL; rádios ligados na bancada.",
+  "firmwaresSeen": [
+    {
+      "version": "V3.0.0C6_MUL",
+      "sample": "ZXHN-H198A-V3.0_V3.0.0C6_MUL.anon.json"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "nao-suportado",
+      "source": "vp"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "contadores da WAN lidos duas vezes (5 s)"
+    },
+    "system": {
+      "status": "nao-suportado",
+      "source": "vp"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "a lista padrão (AssociatedDevice) só traz o IP: o sinal vem da mesh pelo MAC (Redmi-A5 -44 dBm perto do roteador) e o contador da faixa (TotalAssociations sempre 0) vem da lista"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh",
+      "notes": "como principal: topologia completa (H199A no cabo 100 Mbps; H3601P pelo Wi-Fi 867 Mbps, -39 dBm); Redmi-A5 do principal (-44 dBm) para o H199A (-65 dBm)"
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "4/4, 20 ms"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "bancada: voltou em 81 s; connection request ok depois do boot"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "sem Bandsteering: nome e senha gravados em cada faixa (redes separadas) e revertidos"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "canal, largura e potência aplicados nas duas faixas e revertidos"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "sem Bandsteering: desligar o 2,4 GHz desliga só o 2,4 (o 5 GHz continua), e vice-versa"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "same-ssid",
+      "notes": "same-ssid: unificar = mesmo nome e senha nas duas faixas (o painel grava o 5 GHz junto); separar = nome próprio no 5 GHz; a mesh se manteve"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Claude (bancada teste_ztev9)"
+  },
+  "history": [
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "mudança fundo"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "bancada teste_ztev9: traffic, ping, wifiWrite, wifiRadio, wifiPower e wifiUnify (same-ssid) → homologado; reboot testado de fato (15/17 resolvidos; faltam wifiClients e mesh)"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "wifiClients (sinal pela mesh) e mesh (troca de nó) → homologado → 15/17 + 2 n/s: homologado"
+    }
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "channel": "refresh-vp",
+  "configurations": [
+    {
+      "args": null,
+      "name": "refresh-vp",
+      "type": "provision"
+    }
+  ],
+  "events": {},
+  "precondition": "",
+  "weight": 0
+}

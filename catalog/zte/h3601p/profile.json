@@ -1,0 +1,144 @@
+{
+  "id": "zte/h3601p",
+  "vendor": "ZTE",
+  "model": "ZXHN H3601P",
+  "commercialName": "ZTE ZXHN H3601P",
+  "kind": "router",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "ZXHN H3601P",
+      "H3601P"
+    ]
+  },
+  "wifi": {
+    "generation": 6,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 3,
+    "wan": "Ethernet"
+  },
+  "notes": "Wi-Fi 6 sem os campos extras (WPA3/OFDMA) das ONUs. Bancada: teste_ztev9, serial ZTEKH8TRCF10514, V9.0.0P11_MUL. O DHCP lista uma interface interna do satélite (MAC 5e:78:f0:..., IP 0.0.0.0): o painel omite entradas sem IP e sem nome.",
+  "firmwaresSeen": [
+    {
+      "version": "V9.0.0P10_MUL",
+      "sample": "ZXHN-H3601P_V9.0.0P10_MUL.anon.json"
+    },
+    {
+      "version": "V9.0.0P11_MUL",
+      "notes": "bancada teste_ztev9 (2026-10-09): leitura e escritas validadas"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "nao-suportado",
+      "source": "vp"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "contadores da WAN lidos duas vezes (5 s)"
+    },
+    "system": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "CPU 2% e memória 51% (campo de memória da ZTE, como no H199A)"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh",
+      "notes": "como principal: topologia completa em cadeia (H199A no cabo, hop 1; outro H3601P pelo Wi-Fi via H199A, hop 2, 867 Mbps, -24 dBm); Redmi-A5 no 5 GHz (-66 dBm) aparecendo no H199A"
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "4/4, 38 ms"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "bancada: voltou em 61 s; connection request ok depois do boot"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "nome e senha com a rede unificada (vale para as duas faixas)"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "canal, largura e potência aplicados na hora e revertidos (5 GHz até 160 MHz)"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "com Bandsteering, desligar o 5 GHz desliga só o 5; desligar o 2,4 desliga as duas faixas"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "zte-bandsteering",
+      "notes": "separar (5 GHz com nome e senha próprios) e unificar de volta; os 2 satélites continuaram na mesh"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Administrador"
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "bancada teste_ztev9 (V9.0.0P11_MUL): system, traffic, ping, wifiWrite, wifiRadio, wifiPower e wifiUnify → homologado; reboot testado de fato (16/17; falta a troca de nó da mesh)"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "mesh → homologado (aparelho no satélite) → 16/17 + 1 n/s: homologado"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "mudança fundo"
+    }
+  ]
+}

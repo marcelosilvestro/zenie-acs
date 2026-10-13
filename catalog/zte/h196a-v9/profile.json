@@ -1,0 +1,139 @@
+{
+  "id": "zte/h196a-v9",
+  "vendor": "ZTE",
+  "model": "H196A V9",
+  "commercialName": "ZTE H196A V9",
+  "kind": "router",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "H196A V9",
+      "H196A"
+    ]
+  },
+  "wifi": {
+    "generation": 5,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 2,
+    "wan": "Ethernet"
+  },
+  "notes": "Controlador EasyMesh com satélite ZXHN H199A (backhaul cabo) — topologia e aparelhos por nó validados. Velocidade da porta WAN validada forçando 100 Mbps. Alterações homologadas em 2026-10-07 na rede de um cliente do provedor (no cabo, com autorização).",
+  "firmwaresSeen": [
+    {
+      "version": "V9.0.0P7_MUL",
+      "sample": "H196A-V9_V9.0.0P7_MUL.anon.json"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "nao-suportado",
+      "source": "vp"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "WANCommonInterfaceConfig; 1,37 Mbps em 6 s, coerente (2026-10-07)"
+    },
+    "system": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "CPU 0% e memória 51% estáveis em 3 leituras"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh"
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "gateway, DNS e internet ok"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "RPC Reboot é obrigatório na norma TR-069"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "nome e senha gravados com a rede unificada (valem para as 2 faixas)"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "canal 2,4/5 (fixo e auto), largura 20/40/80/Auto e potência 20-100% aplicados e revertidos; X_ZTE-COM_BandWidth validado"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "COM REDE UNIFICADA, desligar uma faixa desliga as DUAS (Bandsteering); religar volta as duas"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "zte-bandsteering",
+      "notes": "separar (5 GHz com nome/senha próprios) e unificar de volta ok; controlador mesh: satélite H199A permaneceu na topologia"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Administrador"
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Claude",
+      "note": "homologação completa: leituras reconferidas ao vivo; traffic, system, ping, wifiRadio e wifiPower → homologado; nome da rede ok; senha e unificar não testados; reinício não testado (derruba o cabo; RPC da norma)"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Claude",
+      "note": "senha e unificar/separar testados (senha trocada com autorização do usuário) → 17/17: homologado"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "mudança fundo"
+    }
+  ]
+}

@@ -1,0 +1,158 @@
+{
+  "id": "zte/f670l",
+  "vendor": "ZTE",
+  "model": "F670L V9",
+  "commercialName": "ZTE F670L V9",
+  "kind": "onu-gpon",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "F670L"
+    ],
+    "hardwareVersion": [
+      "V9."
+    ]
+  },
+  "wifi": {
+    "generation": 5,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 4,
+    "wan": "GPON"
+  },
+  "notes": "Revisão de hardware V9 (HardwareVersion V9.0; firmwares V9.0.11). A V1 tem firmware bem diferente e perfil próprio (zte/f670l-v1). Vários OUIs no mesmo modelo (94E3EE, 94286F, 200889).",
+  "firmwaresSeen": [
+    {
+      "version": "V9.0.11P3N10",
+      "sample": "F670L_V9.0.11P3N10.anon.json",
+      "notes": "homologado na ONU de bancada testeZTE2 (2026-10-08); no BOOTSTRAP a credencial de connection request não ficou gravada (ver docs/HOMOLOGACAO.md)"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "WANCommonInterfaceConfig: contadores subindo de forma coerente em 7,7 s (2026-10-08)"
+    },
+    "system": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "CPU 1-4% e memória 59% estáveis em 3 leituras (V9.0.11P3N10, 2026-10-08)"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh",
+      "notes": "Bancada 2026-10-09 (testeZTE2, V9.0.11P3N10), satélites H3601P (cabo 1000 Mbps) e H199A (cabo 100 Mbps). Topologia completa no TR-069: modelo, serial, MAC, hop e backhaul de cada satélite. Redmi-A5 no principal (5 GHz, -62 dBm) e, ao trocar de nó, no H199A (-58 dBm); notebook no cabo do H3601P."
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "gateway, DNS e internet (8.8.8.8) com 4/4 respostas"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "RPC Reboot é obrigatório na norma TR-069"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "nome e senha gravados com a rede unificada (valem para as 2 faixas); nome revertido"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "canal 2,4/5 (fixo e auto), largura 20/40/80/Auto e potência 60/100% aplicados e revertidos"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "COM REDE UNIFICADA: desligar o 5 GHz desliga só o 5 GHz; desligar o 2,4 GHz desliga as DUAS; religar o 2,4 religa as duas"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "zte-bandsteering",
+      "notes": "separar restaura o 5 GHz antigo (SSID ZTE_5G_*), por isso SSID e senha do 5 GHz são obrigatórios; unificar de volta ok"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Administrador"
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-08",
+      "by": "Claude",
+      "note": "bancada testeZTE2 (V9.0.11P3N10): system, traffic, ping, wifiWrite, wifiRadio, wifiPower e wifiUnify → homologado (16/17); falta mesh"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "separado por versão de hardware a pedido do usuário: este perfil passa a ser só da V9 (HardwareVersion V9.); a V1 ganhou perfil próprio"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "mesh: a-validar → homologado (2 satélites no cabo, aparelho trocando de nó) → 17/17: homologado"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "mudança fundo"
+    }
+  ]
+}

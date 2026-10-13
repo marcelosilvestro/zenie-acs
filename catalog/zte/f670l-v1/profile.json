@@ -1,0 +1,151 @@
+{
+  "id": "zte/f670l-v1",
+  "vendor": "ZTE",
+  "model": "F670L V1",
+  "commercialName": "ZTE F670L V1",
+  "kind": "onu-gpon",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "F670L"
+    ],
+    "hardwareVersion": [
+      "V1."
+    ]
+  },
+  "wifi": {
+    "generation": 5,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 4,
+    "wan": "GPON"
+  },
+  "notes": "Revisão de hardware V1 (HardwareVersion V1.1.01; firmware V1.1.20P3N12), firmware bem diferente da V9. Particularidades: o ping precisa da Interface (WAN); a troca de canal leva ~10 s; ópticos em valor bruto SFF-8472 (o VP converte); rejeita PeriodicInformTime; a senha do Wi-Fi não é devolvida na leitura.",
+  "firmwaresSeen": [
+    {
+      "version": "V1.1.20P3N12",
+      "sample": "F670L_V1.1.20P3N12.anon.json",
+      "notes": "ópticos em valor bruto SFF-8472; rejeita PeriodicInformTime; senha Wi-Fi em PreSharedKey.1.KeyPassphrase"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "RX -21,14 dBm no ACS x -21,136 dBm medido pela OLT na ONU; TX 2,25 x 2,41 dBm; temperatura, tensão e corrente coerentes"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "PPPoE, IP, gateway, DNS, MTU, VLAN 1016 e serviço INTERNET_VoIP_TR069"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "link GPON informado (2500/1250 Mbps)"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "4 portas com estado e velocidade (100/100/desligada/1000 com os satélites e o notebook da bancada)"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "endereço, prefixo, DNS e estado da WAN; prefixo delegado na LAN"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "SSID, canal, largura, padrão, segurança, potência e opções das duas faixas; Bandsteering"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "contadores da WAN lidos duas vezes (5 s): ~10/18 kbps com a bancada parada"
+    },
+    "system": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "CPU 8% e memória 45%, valores estáveis"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "Redmi-A5 no 5 GHz: -66 dBm, 433,5 Mbps, IP; contador da faixa e DHCP coerentes"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "notebook (estático) e os dois satélites (DHCP) com IP, MAC e interface"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh",
+      "notes": "topologia completa no TR-069 (modelo, serial, hop, backhaul): H3601P no cabo 1000 Mbps e H199A pelo Wi-Fi 5 GHz 867 Mbps -25 dBm; Redmi-A5 do principal (-69 dBm) para o H199A (-60 dBm)"
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "IPPingDiagnostics só executa com Interface: o adaptador repete pela WAN conectada quando volta \"None\"; 4/4, 18 ms"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "voltou em 74 s; connection request ok depois do boot (credencial da OLT reaplicada)"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "nome e senha com a rede unificada (vale para as duas faixas)"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "largura e potência na hora; o canal leva ~10 s para valer e antes disso a ONU informa um canal provisório (a rota espera 12 s antes de ler)"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "com Bandsteering, desligar o 5 GHz desliga só o 5; desligar o 2,4 desliga as duas faixas (igual à V9)"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "zte-bandsteering",
+      "notes": "separar (5 GHz com nome e senha próprios) e unificar de volta; os 2 satélites continuaram na mesh"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Claude (bancada, F670L V1 em 1/16:13)"
+  },
+  "history": [
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "perfil criado ao separar o F670L por versão de hardware (V1 x V9); fontes copiadas do perfil V9, tudo a validar"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "bancada: 15 capacidades → homologado (todas menos wifiClients e mesh, que esperam um aparelho no Wi-Fi)"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "wifiClients e mesh → homologado (aparelho no Wi-Fi, troca de nó, satélite pelo Wi-Fi) → 17/17: homologado"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "foto alterada"
+    }
+  ]
+}

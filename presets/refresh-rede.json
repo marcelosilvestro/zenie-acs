@@ -1,0 +1,13 @@
+{
+  "channel": "refresh-rede",
+  "configurations": [
+    {
+      "args": null,
+      "name": "refresh-rede",
+      "type": "provision"
+    }
+  ],
+  "events": {},
+  "precondition": "",
+  "weight": 0
+}

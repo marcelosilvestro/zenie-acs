@@ -1,0 +1,17 @@
+# Instalado pelo install.sh em /etc/systemd/system (ZENIE_DIR é substituído pelo caminho real).
+[Unit]
+Description=Zenie: firewall das portas publicadas pelo Docker (CWMP e painel)
+After=docker.service
+Requires=docker.service
+PartOf=docker.service
+
+[Service]
+Type=oneshot
+RemainAfterExit=yes
+# O Docker cria a cadeia DOCKER-USER ao subir; espera até 30 s por ela.
+ExecStartPre=/bin/sh -c 'for i in $(seq 1 30); do iptables -n -L DOCKER-USER >/dev/null 2>&1 && exit 0; sleep 1; done; exit 1'
+ExecStart=ZENIE_DIR/deploy/firewall.sh apply
+ExecStop=ZENIE_DIR/deploy/firewall.sh remove
+
+[Install]
+WantedBy=multi-user.target docker.service

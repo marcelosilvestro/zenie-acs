@@ -1,0 +1,144 @@
+{
+  "id": "zte/f6600p",
+  "vendor": "ZTE",
+  "model": "F6600P",
+  "commercialName": "ZTE F6600P",
+  "kind": "onu-gpon",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "F6600P"
+    ]
+  },
+  "wifi": {
+    "generation": 6,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 4,
+    "wan": "GPON"
+  },
+  "notes": "Bancada: teste_ztev9, SN GPON ZTEGD14F5A1C (1/16:13), firmware V9.0.10P6N6. Mesh com H199A (Wi-Fi) e H3601P (cabo). Leitura conferida também num cliente (V9.0.10P6N40).",
+  "firmwaresSeen": [
+    {
+      "version": "V9.0.10P6N40",
+      "sample": "F6600P_V9.0.10P6N40.anon.json"
+    },
+    {
+      "version": "V9.0.10P6N6",
+      "notes": "ONU de bancada teste_ztev9 (2026-10-09): leitura e escritas validadas"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "bancada: RX -20,6 dBm no ACS x -20,606 dBm medido pela OLT; TX 2,15 x 2,46 dBm"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "system": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "CPU 1% (ProcessStatus.CPUUsage) acompanha X_ZTE-COM_CpuUsed 2%;1%; memória 42% = X_ZTE-COM_MemUsed (Total/Free daria 51%, conta o cache)"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "Redmi-A5 no 5 GHz, -68 dBm, IP; DHCP coerente"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh",
+      "notes": "bancada: topologia completa no TR-069 (H3601P cabo 1000 Mbps; H199A Wi-Fi 866 Mbps -13 dBm), com modelo, serial e hop; notebook movido do principal para o cabo do H199A apareceu no nó certo; Redmi-A5 no principal (5 GHz)"
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "4/4, 18 ms (sem precisar da Interface)"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "bancada: voltou em 111 s; connection request ok depois do boot"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "nome e senha com a rede unificada (vale para as duas faixas)"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "canal, largura e potência aplicados na hora nas duas faixas e revertidos"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "com Bandsteering, desligar o 5 GHz desliga só o 5; desligar o 2,4 desliga as duas faixas"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "zte-bandsteering",
+      "notes": "separar (5 GHz com nome e senha próprios) e unificar de volta; os 2 satélites continuaram na mesh"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Administrador"
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "bancada teste_ztev9 (V9.0.10P6N6): system, ping, wifiWrite, wifiRadio, wifiPower e wifiUnify → homologado; reboot testado de fato (16/17; falta a troca de nó da mesh)"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "mesh → homologado (aparelho trocando de nó) → 17/17: homologado"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "mudança fundo"
+    }
+  ]
+}

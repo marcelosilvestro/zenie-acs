@@ -1,0 +1,150 @@
+{
+  "id": "zte/f6201b",
+  "vendor": "ZTE",
+  "model": "F6201B",
+  "commercialName": "ZTE F6201B",
+  "kind": "onu-gpon",
+  "match": {
+    "manufacturer": [
+      "ZTE"
+    ],
+    "productClass": [
+      "F6201B"
+    ]
+  },
+  "wifi": {
+    "generation": 6,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 4,
+    "wan": "GPON"
+  },
+  "notes": "ONU de bancada da homologação. Todas as escritas de Wi-Fi testadas aqui (aplicar e reverter). Mesh testada com 2 satélites de firmwares diferentes (H199A e H3601P).",
+  "firmwaresSeen": [
+    {
+      "version": "V9.3.10P7N9",
+      "sample": "F6201B_V9.3.10P7N9.anon.json"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wanLink": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "ipv6": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "traffic": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "system": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "CPU: ProcessStatus.CPUUsage acompanha a média por núcleo de X_ZTE-COM_CpuUsed (1/10/4/6 x 1,5/10/10,5/6,5); Alarm.CpuUsed (fixo em 2) não é usado. Memória 42% = X_ZTE-COM_MemUsed, estável em 4 leituras (Total/Free daria 51% por contar o cache como usado)"
+    },
+    "wifiClients": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "Redmi-A5 no 5 GHz: −70 dBm, 433 Mbps, tempo conectado coerente (2026-10-08)"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "Redmi-A5: nome, IP 192.168.1.2, MAC, Wi-Fi, lease 24 h (2026-10-08)"
+    },
+    "mesh": {
+      "status": "homologado",
+      "source": "zte-easymesh",
+      "notes": "Bancada 2026-10-09, satélites H199A e H3601P no cabo. O firmware põe a identidade da própria F6201B em cada Agent (MAC/modelo/serial, hop 0, backhaul vazio), mas a lista de aparelhos de cada Agent é a do satélite: notebook movido entre os nós mudou de lista, RSSI do celular igual ao da web. MAC, IP e porta de cada satélite vêm da tabela DHCP (VendorClassID MULTIAP_SLAVE, mesma porta LAN dos aparelhos dele). Modelo e serial do satélite não existem no TR-069 deste firmware."
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping"
+    },
+    "reboot": {
+      "status": "homologado",
+      "source": "tr069",
+      "notes": "RPC Reboot é obrigatório na norma TR-069"
+    },
+    "wifiWrite": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiRadio": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiPower": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "wifiUnify": {
+      "status": "homologado",
+      "source": "zte-bandsteering"
+    }
+  },
+  "homologation": {
+    "status": "homologado",
+    "date": "2026-10-09",
+    "by": "Administrador"
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "Wi-Fi/portas alterados"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Claude",
+      "note": "faixa 6 GHz removida: a F6201B tem só 2,4 e 5 GHz (sample F6201B_V9.3.10P7N9)"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Administrador",
+      "note": "foto alterada"
+    },
+    {
+      "date": "2026-10-08",
+      "by": "Claude",
+      "note": "bancada teste_ztev9: system, wifiClients e dhcpHosts → homologado (16/17); mesh depende de satélite"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Claude",
+      "note": "mesh: a-validar → homologado (2 satélites no cabo, identificação pela tabela DHCP) → 17/17: homologado"
+    },
+    {
+      "date": "2026-10-09",
+      "by": "Administrador",
+      "note": "mudança fundo"
+    }
+  ]
+}

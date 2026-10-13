@@ -1,0 +1,1168 @@
+{
+ "InternetGatewayDevice": {
+  "X_ZTE-COM_EasyMesh": {
+   "_object": true,
+   "_writable": false,
+   "AL_MAC": {
+    "_object": false,
+    "_type": "xsd:string",
+    "_value": "02:00:00:00:00:01",
+    "_writable": false
+   },
+   "Enable": {
+    "_object": false,
+    "_type": "xsd:boolean",
+    "_value": true,
+    "_writable": true
+   },
+   "MeshAgent": {
+    "Backhaul": {
+     "BytesReceived": {
+      "_object": false,
+      "_type": "xsd:unsignedLong",
+      "_value": "0",
+      "_writable": false
+     },
+     "BytesSent": {
+      "_object": false,
+      "_type": "xsd:unsignedLong",
+      "_value": "0",
+      "_writable": false
+     },
+     "MediaType": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "PHYRate": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketErrorsRX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketErrorsTX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketsRX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "PacketsTX": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 0,
+      "_writable": false
+     },
+     "SignalStrength": {
+      "_object": false,
+      "_type": "xsd:int",
+      "_value": 0,
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "Controller": {
+     "AL_MAC": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "02:00:00:00:00:01",
+      "_writable": false
+     },
+     "Manufacturer": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "ZTE",
+      "_writable": false
+     },
+     "ModelName": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "H196A V9",
+      "_writable": false
+     },
+     "SerialNumber": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "H196ASN0001",
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "HopToController": {
+     "_object": false,
+     "_type": "xsd:int",
+     "_value": 0,
+     "_writable": false
+    },
+    "Parent": {
+     "AL_MAC": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "Manufacturer": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "ModelName": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "SerialNumber": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "",
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "STA": {
+     "_object": true,
+     "_writable": true
+    },
+    "Status": {
+     "_object": false,
+     "_type": "xsd:int",
+     "_value": 0,
+     "_writable": false
+    },
+    "TotalSTANumberOfEntries": {
+     "_object": false,
+     "_type": "xsd:unsignedInt",
+     "_value": 0,
+     "_writable": false
+    },
+    "Version": {
+     "_object": false,
+     "_type": "xsd:string",
+     "_value": "",
+     "_writable": false
+    },
+    "_object": true,
+    "_writable": false
+   },
+   "NetworkTopology": {
+    "Agent": {
+     "1": {
+      "AL_MAC": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "02:00:00:00:00:02",
+       "_writable": false
+      },
+      "Active": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "1",
+       "_writable": false
+      },
+      "Backhaul": {
+       "DownlinkAdaptRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1000,
+        "_writable": false
+       },
+       "DownlinkPHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1000,
+        "_writable": false
+       },
+       "MediaType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "IEEE 802.3ab",
+        "_writable": false
+       },
+       "PHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1000,
+        "_writable": false
+       },
+       "PacketErrorsRX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketErrorsTX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "PacketsRX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 52266793,
+        "_writable": false
+       },
+       "PacketsTX": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 68782832,
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1799,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": -1,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 6420,
+        "_writable": false
+       },
+       "UplinkAdaptRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1000,
+        "_writable": false
+       },
+       "UplinkPHYRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1000,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "HopToController": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 1,
+       "_writable": false
+      },
+      "Manufacturer": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "ZTE",
+       "_writable": false
+      },
+      "ModelName": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "ZXHN H199A",
+       "_writable": false
+      },
+      "Parent": {
+       "AL_MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:01",
+        "_writable": false
+       },
+       "Manufacturer": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "ZTE",
+        "_writable": false
+       },
+       "ModelName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "H196A V9",
+        "_writable": false
+       },
+       "SerialNumber": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "H196ASN0001",
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": false
+      },
+      "STA": {
+       "1": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "ETH",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "1",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_writable": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-08T14:15:55.000Z"
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:03",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "192.168.88.99",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:03",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_writable": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 1
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": 0,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_writable": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 75
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "2": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "ETH",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "1",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-07T22:42:11.000Z",
+         "_writable": false
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:04",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "192.168.88.103",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:04",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 1795,
+         "_writable": false
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": 0,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 6342,
+         "_writable": false
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "3": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "ETH",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "1",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-07T22:42:11.000Z",
+         "_writable": false
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:05",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "0.0.0.0",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:05",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 1795,
+         "_writable": false
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": 0,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 6342,
+         "_writable": false
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "4": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "ETH",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "0",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-08T10:39:55.000Z",
+         "_writable": false
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:06",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "0.0.0.0",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:06",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": 0,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "5": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "5G",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "1",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-08T14:15:23.000Z",
+         "_writable": false
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "aparelho-1",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "192.168.88.115",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:07",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": -42,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "6": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "2.4G",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "1",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-07T22:47:09.000Z",
+         "_writable": false
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "aparelho-2",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "192.168.88.100",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:08",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": -42,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "8": {
+        "AccessType": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "2.4G",
+         "_writable": false
+        },
+        "Active": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "1",
+         "_writable": false
+        },
+        "AssociationTime": {
+         "_object": false,
+         "_type": "xsd:dateTime",
+         "_value": "2026-10-07T22:50:02.000Z",
+         "_writable": false
+        },
+        "HostName": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:09",
+         "_writable": false
+        },
+        "IPv4Address": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "0.0.0.0",
+         "_writable": false
+        },
+        "MAC": {
+         "_object": false,
+         "_type": "xsd:string",
+         "_value": "02:00:00:00:00:09",
+         "_writable": false
+        },
+        "RxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "SignalStrength": {
+         "_object": false,
+         "_type": "xsd:int",
+         "_value": -43,
+         "_writable": false
+        },
+        "TxRate": {
+         "_object": false,
+         "_type": "xsd:unsignedInt",
+         "_value": 0,
+         "_writable": false
+        },
+        "_object": true,
+        "_writable": true
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "SerialNumber": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "H196ASN0002",
+       "_writable": false
+      },
+      "SoftwareVersion": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "V9.1.0P13_MUL",
+       "_writable": false
+      },
+      "Status": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 1,
+       "_writable": false
+      },
+      "TotalSTANumberOfEntries": {
+       "_object": false,
+       "_type": "xsd:unsignedInt",
+       "_value": 6,
+       "_writable": false
+      },
+      "Version": {
+       "_object": false,
+       "_type": "xsd:string",
+       "_value": "MAP v1.0",
+       "_writable": false
+      },
+      "_object": true,
+      "_writable": true
+     },
+     "_object": true,
+     "_writable": true
+    },
+    "Controller": {
+     "AL_MAC": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "02:00:00:00:00:01",
+      "_writable": false
+     },
+     "Manufacturer": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "ZTE",
+      "_writable": false
+     },
+     "ModelName": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "H196A V9",
+      "_writable": false
+     },
+     "STA": {
+      "1": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "2.4G",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "0",
+        "_writable": false
+       },
+       "AssociationTime": {
+        "_object": false,
+        "_type": "xsd:dateTime",
+        "_value": "2026-10-08T13:26:40.000Z",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0a",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "0.0.0.0",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0a",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 0,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "2": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "5G",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1",
+        "_writable": false
+       },
+       "AssociationTime": {
+        "_object": false,
+        "_type": "xsd:dateTime",
+        "_value": "2026-10-08T13:55:07.000Z",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "aparelho-3",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.88.109",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0b",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": -54,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "3": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "5G",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1",
+        "_writable": false
+       },
+       "AssociationTime": {
+        "_object": false,
+        "_type": "xsd:dateTime",
+        "_value": "2026-10-08T12:26:40.000Z",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0c",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.88.106",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0c",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 2,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": -48,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "4": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "5G",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1",
+        "_writable": false
+       },
+       "AssociationTime": {
+        "_object": false,
+        "_type": "xsd:dateTime",
+        "_value": "2026-10-08T12:26:44.000Z",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0d",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.88.105",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0d",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 2,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": -44,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 3,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "5": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "5G",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1",
+        "_writable": false
+       },
+       "AssociationTime": {
+        "_object": false,
+        "_type": "xsd:dateTime",
+        "_value": "2026-10-08T14:19:04.000Z",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "aparelho-1",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.88.113",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0e",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": -84,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 0,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "6": {
+       "AccessType": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "ETH",
+        "_writable": false
+       },
+       "Active": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "1",
+        "_writable": false
+       },
+       "AssociationTime": {
+        "_object": false,
+        "_type": "xsd:dateTime",
+        "_value": "2026-10-08T13:32:30.000Z",
+        "_writable": false
+       },
+       "HostName": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "aparelho-4",
+        "_writable": false
+       },
+       "IPv4Address": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "192.168.88.108",
+        "_writable": false
+       },
+       "MAC": {
+        "_object": false,
+        "_type": "xsd:string",
+        "_value": "02:00:00:00:00:0f",
+        "_writable": false
+       },
+       "RxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 79226,
+        "_writable": false
+       },
+       "SignalStrength": {
+        "_object": false,
+        "_type": "xsd:int",
+        "_value": 0,
+        "_writable": false
+       },
+       "TxRate": {
+        "_object": false,
+        "_type": "xsd:unsignedInt",
+        "_value": 1622,
+        "_writable": false
+       },
+       "_object": true,
+       "_writable": true
+      },
+      "_object": true,
+      "_writable": true
+     },
+     "SerialNumber": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "H196ASN0001",
+      "_writable": false
+     },
+     "TotalSTANumberOfEntries": {
+      "_object": false,
+      "_type": "xsd:unsignedInt",
+      "_value": 5,
+      "_writable": false
+     },
+     "Version": {
+      "_object": false,
+      "_type": "xsd:string",
+      "_value": "MAP v1.0",
+      "_writable": false
+     },
+     "_object": true,
+     "_writable": false
+    },
+    "TotalAgentNumberOfEntries": {
+     "_object": false,
+     "_type": "xsd:unsignedInt",
+     "_value": 1,
+     "_writable": false
+    },
+    "_object": true,
+    "_writable": false
+   },
+   "Role": {
+    "_object": false,
+    "_type": "xsd:int",
+    "_value": 1,
+    "_writable": false
+   },
+   "Version": {
+    "_object": false,
+    "_type": "xsd:string",
+    "_value": "MAP v1.0",
+    "_writable": false
+   }
+  }
+ }
+}

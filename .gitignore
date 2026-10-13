@@ -1,0 +1,26 @@
+.env
+*.log
+__pycache__/
+*.pyc
+.venv/
+node_modules/
+
+# Configurações locais do Claude Code (memória/skills/agents SÃO versionados)
+.claude/settings.local.json
+
+# Firmwares não vão para o git (binários grandes; guardar em storage próprio)
+firmware/
+*.bin
+*.img
+
+# Samples podem conter dados de clientes (PPPoE, senhas Wi-Fi, MACs).
+# Versione só versões anonimizadas: samples/<modelo>.anon.json
+samples/*.json
+!samples/*.anon.json
+
+# Builds do Zenie
+dist/
+*.tsbuildinfo
+
+# Backups locais (contêm segredos)
+backups/

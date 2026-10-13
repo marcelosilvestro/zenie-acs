@@ -1,0 +1,4 @@
+# Sempre LF: scripts rodam no Linux e o sync compara conteúdo byte a byte com o GenieACS.
+* text=auto eol=lf
+*.bin binary
+*.img binary

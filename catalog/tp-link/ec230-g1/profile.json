@@ -1,0 +1,137 @@
+{
+  "id": "tp-link/ec230-g1",
+  "vendor": "TP-Link",
+  "model": "EC230-G1",
+  "commercialName": "TP-Link EC230-G1",
+  "kind": "router",
+  "match": {
+    "manufacturer": [
+      "TP-Link"
+    ],
+    "productClass": [
+      "EC230-G1"
+    ]
+  },
+  "wifi": {
+    "generation": 5,
+    "bands": [
+      "2.4",
+      "5"
+    ]
+  },
+  "ports": {
+    "lan": 4,
+    "wan": "Ethernet"
+  },
+  "notes": "Roteador AC1350 (linha ISP). ProductClass genérico (\"IGD\" em TR-098, \"Device\" em TR-181): reconhecido pelo ModelName. Configurado com \"Inform DataModel with TR098\" ligado; o modo TR-181 ainda não foi avaliado. DNS da WAN só IPv6 (o teste de conectividade usa DNS IPv4 quando houver). Unidade avaliada é de cliente em produção: tag somente_leitura, nenhuma escrita testada.",
+  "firmwaresSeen": [
+    {
+      "version": "2.0.0 0.9 v6034.0 Build 200805 Rel.39961n",
+      "sample": "EC230-G1_2.0.0-0.9-v6034.0-Build-200805-Rel.39961n.anon.json",
+      "notes": "TR-098, 403 parâmetros; contadores da WAN em 32 bits com sinal"
+    }
+  ],
+  "capabilities": {
+    "optical": {
+      "status": "nao-suportado",
+      "source": "vp",
+      "notes": "roteador (WAN Ethernet)"
+    },
+    "wan": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "PPPoE, IP, gateway e MTU conferidos no sample"
+    },
+    "wanLink": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "só WANEthernetInterfaceConfig.MaxBitRate=1000, que parece configuração e não velocidade negociada"
+    },
+    "lanPorts": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "só ligado/desligado; sem velocidade da porta"
+    },
+    "ipv6": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "X_TP_ExternalIPv6Address / X_TP_IPv6DNSServers; conferir ao vivo"
+    },
+    "wifiRead": {
+      "status": "homologado",
+      "source": "vp",
+      "notes": "largura em X_TP_Bandwidth; sem PossibleChannels"
+    },
+    "wifiClients": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "sem AssociatedDevice: lista pela tabela de hosts (Layer2Interface -> WLANConfiguration), sem RSSI/velocidade; um host aponta WLANConfiguration.2, que não existe na árvore (faixa desconhecida)"
+    },
+    "dhcpHosts": {
+      "status": "homologado",
+      "source": "vp"
+    },
+    "system": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "CPU em ProcessStatus.CPUUsage; memória em MemoryStatus (TR-098 padrão); conferir ao vivo"
+    },
+    "traffic": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "WANCommonInterfaceConfig zerado; usa WANEthernetInterfaceConfig.Stats; conferir ao vivo"
+    },
+    "mesh": {
+      "status": "nao-suportado",
+      "source": "zte-easymesh",
+      "notes": "sem mesh"
+    },
+    "ping": {
+      "status": "homologado",
+      "source": "tr098-ipping",
+      "notes": "IPPingDiagnostics TR-098: gateway e internet ok ao vivo"
+    },
+    "reboot": {
+      "status": "a-validar",
+      "source": "tr069",
+      "notes": "não testado (equipamento de cliente)"
+    },
+    "wifiWrite": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "não testado (equipamento de cliente)"
+    },
+    "wifiRadio": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "largura só leitura (X_TP_Bandwidth); sem lista de canais"
+    },
+    "wifiPower": {
+      "status": "a-validar",
+      "source": "vp",
+      "notes": "não testado"
+    },
+    "wifiUnify": {
+      "status": "a-validar",
+      "source": "same-ssid",
+      "notes": "sem Bandsteering: unificar = mesmo nome e senha nas duas faixas"
+    }
+  },
+  "homologation": {
+    "status": "em-homologacao",
+    "date": "2026-10-07",
+    "by": "Claude (amostra só leitura)"
+  },
+  "history": [
+    {
+      "date": "2026-10-07",
+      "by": "Claude",
+      "note": "perfil criado a partir da amostra do EC230-G1 em produção (só leitura, tag somente_leitura)"
+    },
+    {
+      "date": "2026-10-07",
+      "by": "Claude",
+      "note": "wifiClients: nao-suportado → a-validar (lista pela tabela de hosts, sem RSSI)"
+    }
+  ]
+}

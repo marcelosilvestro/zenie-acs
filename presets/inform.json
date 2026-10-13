@@ -1,0 +1,13 @@
+{
+  "channel": "inform",
+  "configurations": [
+    {
+      "args": null,
+      "name": "inform",
+      "type": "provision"
+    }
+  ],
+  "events": {},
+  "precondition": "",
+  "weight": 0
+}

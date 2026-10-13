@@ -1,0 +1,169 @@
+# Zenie: GenieACS 1.2.x + MongoDB + painel NOC (zenie-api / zenie-web).
+# Instalação e operação: ./install.sh, ./update.sh, ./doctor.sh, ./backup.sh (docs/INSTALACAO.md).
+# Firewall das portas publicadas: deploy/firewall.sh (serviço zenie-firewall, cadeia DOCKER-USER).
+#
+# Portas:
+#   7547 CWMP (CPEs)          -> exposta em CWMP_BIND_ADDR (rede da bancada / gerência)
+#   7567 FS   (download fw)   -> exposta em CWMP_BIND_ADDR (CPE baixa firmware daqui)
+#   7557 NBI  (API sem auth!) -> ADMIN_BIND_ADDR (padrão 127.0.0.1)
+#   3000 UI                   -> ADMIN_BIND_ADDR (padrão 127.0.0.1)
+#   MongoDB                   -> não publicado; só na rede interna do compose
+
+x-genieacs: &genieacs
+  build:
+    context: ./docker/genieacs
+    args:
+      GENIEACS_VERSION: ${GENIEACS_VERSION:-1.2.16}
+      NODE_VERSION: ${NODE_VERSION:-22}
+  image: local/genieacs:${GENIEACS_VERSION:-1.2.16}
+  restart: unless-stopped
+  depends_on:
+    mongo:
+      condition: service_healthy
+  environment: &genieacs-env
+    GENIEACS_MONGODB_CONNECTION_URL: mongodb://mongo:27017/genieacs
+    GENIEACS_EXT_DIR: /opt/genieacs/ext
+    GENIEACS_UI_JWT_SECRET: ${GENIEACS_UI_JWT_SECRET:?defina GENIEACS_UI_JWT_SECRET no .env}
+    # Host/IP que vai nas URLs de download entregues às CPEs (firmware/config).
+    GENIEACS_FS_HOSTNAME: ${GENIEACS_FS_HOSTNAME:?defina GENIEACS_FS_HOSTNAME no .env}
+    GENIEACS_FS_PORT: "7567"
+  volumes:
+    # Extensões (ex.: futura integração com API do RouterOS). Somente leitura.
+    - ./ext:/opt/genieacs/ext:ro
+  logging:
+    driver: json-file
+    options:
+      max-size: "20m"
+      max-file: "5"
+
+services:
+  mongo:
+    image: ${MONGO_IMAGE:-mongo:7.0}
+    restart: unless-stopped
+    volumes:
+      - mongo-data:/data/db
+    healthcheck:
+      # mongosh (Mongo >= 6) ou mongo (4.4, para CPU sem AVX).
+      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand(\"ping\").ok' || mongo --quiet --eval 'db.adminCommand(\"ping\").ok'"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  genieacs-cwmp:
+    <<: *genieacs
+    command: genieacs-cwmp
+    environment:
+      <<: *genieacs-env
+      # Log em JSON (uma linha por evento, com deviceId e IP): o Zenie lê e resume em "Log do ACS".
+      GENIEACS_LOG_FORMAT: json
+      GENIEACS_ACCESS_LOG_FORMAT: json
+    ports:
+      - "${CWMP_BIND_ADDR:-0.0.0.0}:7547:7547"
+
+  genieacs-nbi:
+    <<: *genieacs
+    command: genieacs-nbi
+    ports:
+      - "${ADMIN_BIND_ADDR:-127.0.0.1}:7557:7557"
+
+  genieacs-fs:
+    <<: *genieacs
+    command: genieacs-fs
+    ports:
+      - "${CWMP_BIND_ADDR:-0.0.0.0}:7567:7567"
+
+  genieacs-ui:
+    <<: *genieacs
+    command: genieacs-ui
+    ports:
+      - "${ADMIN_BIND_ADDR:-127.0.0.1}:3000:3000"
+
+  # ---------------------------------------------------------------- Zenie (painel NOC)
+  # API: única peça que fala com a NBI; não publicada (só o zenie-web a acessa).
+  zenie-api:
+    build: ./zenie/api
+    image: local/zenie-api:${ZENIE_VERSION:-dev}
+    restart: unless-stopped
+    depends_on:
+      mongo:
+        condition: service_healthy
+      genieacs-nbi:
+        condition: service_started
+    environment:
+      ZENIE_MONGODB_URL: mongodb://mongo:27017/zenie
+      ZENIE_NBI_URL: http://genieacs-nbi:7557
+      ZENIE_COOKIE_SECURE: "true"
+      # true só no servidor de testes (edição do catálogo - docs/HOMOLOGACAO.md).
+      ZENIE_HOMOLOGATION: ${ZENIE_HOMOLOGATION:-false}
+      # Cifra dos segredos guardados no banco (senha do ACS, senhas de OLT). Gerada pelo install/update.
+      ZENIE_SECRET_KEY: ${ZENIE_SECRET_KEY:-}
+      # URL do ACS que as ONUs recebem pela OLT (módulo OLT). Padrão: http://<GENIEACS_FS_HOSTNAME>:7547.
+      GENIEACS_FS_HOSTNAME: ${GENIEACS_FS_HOSTNAME:-}
+      ZENIE_ACS_URL: ${ZENIE_ACS_URL:-}
+      # Teste de conectividade: IP da "Internet" e nomes resolvidos pelo DNS do equipamento (separados por espaço).
+      ZENIE_PING_INTERNET: ${ZENIE_PING_INTERNET:-8.8.8.8}
+      ZENIE_PING_NAMES: ${ZENIE_PING_NAMES:-google.com.br whatsapp.com}
+      # Máximo de ONUs por lote de "Ativar TR-069" (ondas pequenas).
+      ZENIE_TR069_BATCH_MAX: ${ZENIE_TR069_BATCH_MAX:-10}
+      ZENIE_EVENTS_DAYS: ${ZENIE_EVENTS_DAYS:-30}
+    volumes:
+      # Catálogo oficial de modelos homologados (vem do repositório em cada release).
+      - ./catalog:/app/catalog:ro
+      # Socket do agente do host (deploy/hostd): rede e túnel Cloudflare. Só este container o recebe, e só ele tem o
+      # grupo 47547 (dono do socket).
+      - /run/zenie:/run/zenie
+    group_add: ["47547"]
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+
+  # Túnel Cloudflare (Configurações > Túnel Cloudflare): sobe só com o perfil "tunnel", que o agente do host liga
+  # no .env (COMPOSE_PROFILES) junto com o token. Fica numa rede só com o zenie-web: pelo túnel não se alcança a
+  # NBI, a UI do GenieACS nem o MongoDB. Na Cloudflare, o serviço do hostname público é https://zenie-web
+  # (com "No TLS Verify": o certificado do painel é autoassinado).
+  cloudflared:
+    image: cloudflare/cloudflared:2026.9.3
+    profiles: ["tunnel"]
+    restart: unless-stopped
+    networks: [tunnel]
+    command: ["tunnel", "--no-autoupdate", "run"]
+    environment:
+      TUNNEL_TOKEN: ${ZENIE_TUNNEL_TOKEN:-}
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+  # Interface web + nginx com HTTPS (certificado autoassinado gerado na 1ª subida, no volume zenie-tls).
+  zenie-web:
+    build: ./zenie/web
+    image: local/zenie-web:${ZENIE_VERSION:-dev}
+    restart: unless-stopped
+    depends_on:
+      - zenie-api
+    environment:
+      ZENIE_PUBLIC_HOST: ${ZENIE_PUBLIC_HOST:?defina ZENIE_PUBLIC_HOST no .env (IP ou nome do painel)}
+    ports:
+      - "${ZENIE_BIND_ADDR:-0.0.0.0}:443:443"
+      - "${ZENIE_BIND_ADDR:-0.0.0.0}:80:80"
+    networks: [default, tunnel]
+    volumes:
+      - zenie-tls:/etc/zenie/tls
+    logging:
+      driver: json-file
+      options:
+        max-size: "20m"
+        max-file: "5"
+
+volumes:
+  mongo-data:
+  zenie-tls:
+
+networks:
+  default:
+  # Só zenie-web e cloudflared (o túnel enxerga apenas o painel).
+  tunnel:
