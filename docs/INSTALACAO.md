@@ -20,10 +20,18 @@ As portas 7547, 7567, 80 e 443 precisam estar livres.
 
 ## Instalar
 
+Uma linha (baixa a versão publicada mais nova em `/opt/zenie` e roda o `./install.sh`):
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/marcelosilvestro/zenie-acs/main/instalar.sh | sudo bash
+```
+
+Manualmente:
+
 ```bash
 apt-get update && apt-get install -y git
-git clone <url-do-repositório> /opt/zenie
-cd /opt/zenie
+git clone https://github.com/marcelosilvestro/zenie-acs.git /opt/zenie
+cd /opt/zenie && git checkout "$(git tag -l 'v*' --sort=-v:refname | head -n1)"
 sudo ./install.sh
 ```
 

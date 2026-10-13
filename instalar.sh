@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
 # Instalador de uma linha do Zenie (ACS TR-069 + painel NOC). Num Debian 12/13 ou Ubuntu 22.04/24.04 zerado:
 #
-#   wget -O - https://raw.githubusercontent.com/marcelosilvestro/zenie-acs/main/instalar.sh | sudo bash
+#   curl -fsSL https://raw.githubusercontent.com/marcelosilvestro/zenie-acs/main/instalar.sh | sudo bash
+#   (ou: wget -O - https://raw.githubusercontent.com/marcelosilvestro/zenie-acs/main/instalar.sh | sudo bash —
+#    o Debian mínimo não vem com wget; o curl vem)
 #
 # Baixa a versão publicada mais nova (tag vX.Y.Z) em /opt/zenie e roda o ./install.sh, que faz as perguntas.
 # Variáveis opcionais: ZENIE_DIR (padrão /opt/zenie), ZENIE_VERSION (ex.: v0.1.0), ZENIE_REPO.
@@ -39,7 +41,8 @@ main() {
 
   echo "==> Instalando (responda as perguntas a seguir)"
   cd "$dir"
-  if [ -r /dev/tty ]; then
+  # Terminal disponível de verdade (abrir, não só existir: via ssh sem -t o /dev/tty existe mas não abre).
+  if { : </dev/tty; } 2>/dev/null; then
     exec ./install.sh </dev/tty
   fi
   echo "sem terminal interativo: rode com respostas prontas -> cd $dir && cp deploy/respostas.env.example respostas.env (ajuste) && sudo ./install.sh --config respostas.env"

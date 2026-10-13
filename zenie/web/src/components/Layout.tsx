@@ -84,7 +84,10 @@ export function Layout() {
           </li>
         ))}
       </ul>
-      <div className="mt-auto px-2 text-[11px] text-slate-500">Zenie {update?.version ?? "0.1"} · AGPL-3.0</div>
+      <div className="mt-auto px-2 text-[11px] text-slate-500">
+        Zenie {update?.version ?? "0.1"} · AGPL-3.0
+        <div className="text-[10px] text-slate-600">by Marcelo Silvestro</div>
+      </div>
     </nav>
   );
 

@@ -9,6 +9,12 @@ ações auditadas com perfis atendente, NOC e admin; e um catálogo de modelos h
 Uma linha, como root, num Debian 12/13 ou Ubuntu 22.04/24.04:
 
 ```bash
+curl -fsSL https://raw.githubusercontent.com/marcelosilvestro/zenie-acs/main/instalar.sh | sudo bash
+```
+
+Com wget (o Debian mínimo não traz o wget; instale com `apt install wget`):
+
+```bash
 wget -O - https://raw.githubusercontent.com/marcelosilvestro/zenie-acs/main/instalar.sh | sudo bash
 ```
 
