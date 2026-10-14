@@ -24,23 +24,45 @@ const oltHistoryCache = new Map<string, { at: number; result: Awaited<ReturnType
 
 interface MeshTopo { enabled: boolean | null; nodes?: { key: string; role: string; model: string | null; serial: string | null; deviceId: string | null }[] }
 
-/** Aparelhos de todos os nós da mesh; null se o equipamento não tem mesh ligada ou não tem satélites. */
+/**
+ * Situação da mesh na lista de clientes (a tela avisa quando a lista pode estar incompleta):
+ *   ok            todos os roteadores lidos agora
+ *   desatualizada não deu para ler agora; satélites da última leitura
+ *   falhou        não deu para ler e não há topologia conhecida (a lista pode ter só o principal)
+ *   desligada     mesh desligada no equipamento
+ *   sem-satelites mesh ligada, só o principal
+ */
+export type MeshListStatus = "ok" | "desatualizada" | "falhou" | "desligada" | "sem-satelites";
+
+/**
+ * Aparelhos de todos os nós da mesh. Lê a topologia DO EQUIPAMENTO (como a aba Mesh) antes de decidir: antes, a
+ * decisão vinha do banco, e quem abria Clientes sem ter aberto Mesh via só o roteador principal, sem aviso.
+ */
 async function readMeshClients(id: string, mesh: MeshAdapter, refresh: boolean) {
-  if ((await mesh.topology(id) as MeshTopo).enabled !== true) return null;
-  // A lista de cada nó só vem do equipamento com refreshObject (fica fora do inform).
-  const res = refresh ? await runTask(id, { name: "refreshObject", objectName: mesh.root }, 60_000) : null;
+  // A topologia e a lista de cada nó só vêm do equipamento com refreshObject (ficam fora do inform).
+  let res: Awaited<ReturnType<typeof runTask>> | null = null;
+  if (refresh) {
+    res = await runTask(id, { name: "refreshObject", objectName: mesh.root }, 60_000);
+    if (res.ok) for (const root of mesh.extraRoots ?? []) await runTask(id, { name: "refreshObject", objectName: root }, 60_000);
+  }
+  // Sem leitura agora (equipamento não respondeu) a topologia é a do banco: nunca "ok".
+  const fresh = res?.ok === true;
   const topo = await mesh.topology(id) as MeshTopo;
+  if (topo.enabled !== true) return { status: (topo.enabled === false && fresh ? "desligada" : fresh ? "sem-satelites" : "falhou") as MeshListStatus, data: null };
   const nodes = topo.nodes ?? [];
-  if (nodes.length < 2) return null;
+  if (nodes.length < 2) return { status: (fresh ? "sem-satelites" : "falhou") as MeshListStatus, data: null };
   const stations = [];
   for (const n of nodes) {
     for (const s of (await mesh.stations(id, n.key)) ?? []) stations.push({ ...(s as object), node: n.key });
   }
   return {
-    source: mesh.id,
-    refreshed: res?.ok ?? false,
-    nodes: nodes.map((n) => ({ key: n.key, role: n.role, model: n.model, serial: n.serial, deviceId: n.deviceId })),
-    stations,
+    status: (fresh ? "ok" : "desatualizada") as MeshListStatus,
+    data: {
+      source: mesh.id,
+      refreshed: res?.ok ?? false,
+      nodes: nodes.map((n) => ({ key: n.key, role: n.role, model: n.model, serial: n.serial, deviceId: n.deviceId })),
+      stations,
+    },
   };
 }
 
@@ -298,7 +320,7 @@ export async function deviceRoutes(app: FastifyInstance): Promise<void> {
     if (!raw) return reply.code(404).send({ error: "equipamento não encontrado" });
     const result = await runTask(id, { name: "getParameterValues", parameterNames: LIST_VPS.map((v) => `VirtualParameters.${v}`) }, 90_000);
     const mesh = capabilityFor(raw, "mesh").allowed ? meshAdapter(raw) : null;
-    const meshClients = mesh ? await readMeshClients(id, mesh, result.ok) : null;
+    const meshRead = mesh ? await readMeshClients(id, mesh, result.ok) : null;
     const d = await fetchDevice(id);
     const clients = d ? buildDevice(d).clients : null;
     // Lista padrão sem sinal (H198A V3.0: AssociatedDevice só tem o IP): completa pelo sinal do mesmo aparelho na
@@ -318,7 +340,7 @@ export async function deviceRoutes(app: FastifyInstance): Promise<void> {
         }
       }
     }
-    return { result, clients, mesh: meshClients };
+    return { result, clients, mesh: meshRead?.data ?? null, meshStatus: meshRead?.status ?? null };
   });
 
   // Exclui um equipamento do ACS (admin): GenieACS (dispositivo + tarefas/falhas pendentes) e índice do Zenie.

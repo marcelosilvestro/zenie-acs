@@ -5,8 +5,7 @@ import type { FastifyInstance } from "fastify";
 import type { Filter } from "mongodb";
 import { requireAuth } from "../auth.js";
 import { acsLog, acsLogState, inventory, type AcsLogEntry } from "../db.js";
-import { pollAcsLog } from "../acslog.js";
-import { HostdError } from "../hostd.js";
+import { readerState } from "../acslog.js";
 
 const escapeRegex = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
@@ -26,11 +25,9 @@ function parseDeviceId(id: string): { oui: string; productClass: string; serial:
 
 export async function acsLogRoutes(app: FastifyInstance) {
   app.get<{ Querystring: { hours?: string; kind?: string; level?: string; q?: string } }>("/api/acs-log", { preHandler: requireAuth("acslog.view") }, async (request, reply) => {
-    // Lê o que chegou desde a última passada (a tela não espera 15 s); sem o agente, mostra o que já foi guardado.
-    let reader: string | null = null;
-    await pollAcsLog(request.log).catch((e) => {
-      reader = e instanceof HostdError && e.code === "no_hostd" ? "no_hostd" : "erro";
-    });
+    // Não lê o log aqui: a leitura em segundo plano roda a cada 15 s (ler dentro da requisição deixava a tela ~2 s
+    // em branco). A tela mostra quando foi a última leitura.
+    const reader = readerState.error;
     const hours = Math.min(168, Math.max(1, Number(request.query.hours) || 24));
     const since = new Date(Date.now() - hours * 3600_000);
     const filter: Filter<AcsLogEntry> = { last: { $gte: since } };

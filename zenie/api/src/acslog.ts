@@ -137,6 +137,9 @@ export function classify(l: RawLine): Classified | null {
 
 const HOUR = 3600_000;
 
+/** Situação da leitura em segundo plano (a tela mostra; não espera a leitura). */
+export const readerState: { at: Date | null; error: null | "no_hostd" | "erro" } = { at: null, error: null };
+
 /** Lê as linhas novas pelo agente e grava o resumo. Uma execução por vez. */
 let running = false;
 export async function pollAcsLog(log?: FastifyBaseLogger): Promise<void> {
@@ -203,10 +206,17 @@ export async function pollAcsLog(log?: FastifyBaseLogger): Promise<void> {
 
 export function startAcsLog(seconds: number, log: FastifyBaseLogger): NodeJS.Timeout {
   const run = () =>
-    pollAcsLog(log).catch((e) => {
-      // Sem o agente (instalação antiga): silencioso; outros erros aparecem no log da API.
-      if (!(e instanceof Error && /zenie-hostd/.test(e.message))) log.warn({ err: e }, "falha ao ler o log do ACS");
-    });
+    pollAcsLog(log)
+      .then(() => {
+        readerState.at = new Date();
+        readerState.error = null;
+      })
+      .catch((e) => {
+        // Sem o agente (instalação antiga): silencioso; outros erros aparecem no log da API.
+        const noHostd = e instanceof Error && /zenie-hostd/.test(e.message);
+        readerState.error = noHostd ? "no_hostd" : "erro";
+        if (!noHostd) log.warn({ err: e }, "falha ao ler o log do ACS");
+      });
   void run();
   return setInterval(run, seconds * 1000);
 }

@@ -1,7 +1,7 @@
 // Log do ACS (NOC/admin): por que um equipamento não está 100% — senha recusada, comandos recusados, falhas de
 // configuração automática, sessões interrompidas. Resumo do log do GenieACS, agrupado e em português.
 
-import { AlertTriangle, CheckCircle2, CircleAlert, Info, RefreshCw, ScrollText } from "lucide-react";
+import { AlertTriangle, CheckCircle2, CircleAlert, Info, Loader2, RefreshCw, ScrollText } from "lucide-react";
 import { useCallback, useEffect, useState, type ReactNode } from "react";
 import { Link } from "react-router";
 import { api, formatDateTime, timeAgo } from "../api";
@@ -91,7 +91,7 @@ export function AcsLog() {
       <div className="mb-5 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
         <div className="rounded-xl border border-line bg-card p-4">
           <div className="text-xs text-muted">Sessões bem-sucedidas</div>
-          <div className="text-2xl font-semibold">{data?.informs.sessions ?? "—"}</div>
+          <div className="text-2xl font-semibold">{data ? data.informs.sessions : <span className="mt-2 block h-6 w-20 animate-pulse rounded bg-slate-100" />}</div>
           <div className="text-xs text-muted">{data ? `${data.informs.devices} equipamentos falaram com o ACS` : ""}</div>
         </div>
         {problems.slice(0, 3).map((s) => (
@@ -104,6 +104,13 @@ export function AcsLog() {
             <div className="text-2xl font-semibold">{s.count}</div>
             <div className="text-xs text-muted">{s.devices} {s.devices === 1 ? "equipamento" : "equipamentos"} · clique para filtrar</div>
           </button>
+        ))}
+        {!data && !error && [0, 1, 2].map((k) => (
+          <div key={k} className="rounded-xl border border-line bg-card p-4">
+            <div className="h-3 w-32 animate-pulse rounded bg-slate-100" />
+            <div className="mt-3 h-6 w-16 animate-pulse rounded bg-slate-100" />
+            <div className="mt-2 h-3 w-40 animate-pulse rounded bg-slate-100" />
+          </div>
         ))}
         {data && !problems.length && (
           <div className="rounded-xl border border-line bg-card p-4 sm:col-span-1 xl:col-span-3">
@@ -137,15 +144,22 @@ export function AcsLog() {
             <option value="warn">Só atenção</option>
           </Select>
           <Input className="w-64" placeholder="Login PPPoE, serial ou IP" value={q} onChange={(e) => setQ(e.target.value)} />
-          {data?.readAt && <span className="text-xs text-muted">lido {timeAgo(data.readAt)}</span>}
+          {loading && data && <span className="inline-flex items-center gap-1 text-xs text-muted"><Loader2 size={13} className="animate-spin" />atualizando…</span>}
+          {!loading && data?.readAt && <span className="text-xs text-muted">lido {timeAgo(data.readAt)}</span>}
         </div>
+
+        {!data && !error && (
+          <div className="flex items-center justify-center gap-2 py-12 text-sm text-muted">
+            <Loader2 size={18} className="animate-spin text-brand" />Carregando as ocorrências do ACS…
+          </div>
+        )}
 
         {data && !data.items.length ? (
           <EmptyState icon={<ScrollText size={32} />} title="Nada registrado com esses filtros">
             O log guarda 7 dias. Sessões bem-sucedidas só aparecem no contador acima.
           </EmptyState>
         ) : (
-          <ul className="space-y-1.5">
+          <ul className={`space-y-1.5 transition-opacity ${loading ? "opacity-50" : ""}`}>
             {data?.items.map((it) => {
               const d = it.device;
               const who = d ? (d.known ? d.pppoe || d.serial || d.id : d.serial || d.id) : it.ip ?? "—";

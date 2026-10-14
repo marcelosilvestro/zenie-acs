@@ -2,7 +2,7 @@
 
 import { Activity, Cable, Clock, Gauge, Info, Monitor, RefreshCw, Smartphone, Thermometer, Wifi, WifiOff } from "lucide-react";
 import { useEffect, useState, type ReactNode } from "react";
-import { api, describeStandard, formatDateTime, formatDuration, timeAgo, wifiGeneration, type DeviceClients, type DeviceDetail, type Level, type MeshClients, type TaskResult, type WifiBand, type WifiClient } from "../../api";
+import { api, describeStandard, formatDateTime, formatDuration, timeAgo, wifiGeneration, type DeviceClients, type DeviceDetail, type Level, type MeshClients, type MeshListStatus, type TaskResult, type WifiBand, type WifiClient } from "../../api";
 import { OnlineBadge, RxBadge, WifiGenBadge } from "../../components/status";
 import { Alert, Badge, Button, Card, ConfirmDialog, EmptyState, InfoRow, Switch } from "../../components/ui";
 import { LoadBar } from "./Diagnostics";
@@ -101,6 +101,8 @@ export function OverviewTab({ d, onTab }: { d: DeviceDetail; onTab: (t: string) 
   // Clientes Wi-Fi: só quando o modelo informa (senão "0 clientes" seria falso).
   const clientsKnown = d.capabilities?.wifiClients?.status !== "nao-suportado" && d.wifi.bands.some((b) => b.clients !== null);
   const wifiClients = d.wifi.bands.reduce((s, b) => s + (b.clients ?? 0), 0);
+  // Modelo com mesh: o contador da faixa é só do roteador principal (os satélites aparecem na aba Clientes).
+  const meshModel = d.capabilities?.mesh?.status !== undefined && d.capabilities.mesh.status !== "nao-suportado";
   const hosts = d.clients.hosts;
   const activeHosts = hosts ? hosts.filter((h) => h.active !== false).length : null;
   return (
@@ -155,11 +157,11 @@ export function OverviewTab({ d, onTab }: { d: DeviceDetail; onTab: (t: string) 
         <Card title="Wi-Fi" actions={<button className="text-xs text-brand hover:underline" onClick={() => onTab("wifi")}>detalhes</button>}>
           {d.wifi.unify?.unified && <div className="mb-2"><Badge tone="info">2,4 e 5 GHz unificados</Badge></div>}
           {d.wifi.bands.map((b) => (
-            <InfoRow key={b.band} label={`${b.band} GHz`} value={b.enabled === null ? null : b.enabled ? (clientsKnown ? `${b.ssid ?? "—"} · ${b.clients ?? 0} cliente(s)` : b.ssid ?? "—") : "desligado"} />
+            <InfoRow key={b.band} label={`${b.band} GHz`} value={b.enabled === null ? null : b.enabled ? (clientsKnown ? `${b.ssid ?? "—"} · ${b.clients ?? 0} cliente(s)${meshModel ? " no principal" : ""}` : b.ssid ?? "—") : "desligado"} />
           ))}
           <div className="mt-3">
             <Button variant="secondary" className="w-full" onClick={() => onTab("clientes")}>
-              {clientsKnown ? `Ver ${wifiClients} cliente(s) Wi-Fi e dispositivos da rede` : "Ver dispositivos da rede"}
+              {clientsKnown ? (meshModel ? `Ver todos os clientes (${wifiClients} no principal; a mesh é lida na aba)` : `Ver ${wifiClients} cliente(s) Wi-Fi e dispositivos da rede`) : "Ver dispositivos da rede"}
             </Button>
           </div>
         </Card>
@@ -398,15 +400,19 @@ export function ClientsTab({ d, canRefresh }: { d: DeviceDetail; canRefresh: boo
   const [loading, setLoading] = useState(false);
   const [result, setResult] = useState<TaskResult | null>(null);
   const [mesh, setMesh] = useState<MeshClients | null>(null);
+  const [meshStatus, setMeshStatus] = useState<MeshListStatus | null>(null);
+  // Modelo com mesh (homologada ou a validar): a lista só fica completa depois de ler todos os roteadores.
+  const hasMesh = d.capabilities?.mesh?.status !== undefined && d.capabilities.mesh.status !== "nao-suportado";
 
   const read = async () => {
     setLoading(true);
     setResult(null);
     try {
-      const res = await api<{ result: TaskResult; clients: DeviceClients | null; mesh?: MeshClients | null }>(`/api/devices/${encodeURIComponent(d.id)}/clients`, { method: "POST" });
+      const res = await api<{ result: TaskResult; clients: DeviceClients | null; mesh?: MeshClients | null; meshStatus?: MeshListStatus | null }>(`/api/devices/${encodeURIComponent(d.id)}/clients`, { method: "POST" });
       setResult(res.result);
       if (res.clients) setClients(res.clients);
       setMesh(res.mesh ?? null);
+      setMeshStatus(res.meshStatus ?? null);
     } catch (e) {
       setResult({ ok: false, outcome: "fault", message: e instanceof Error ? e.message : "erro", ms: 0 });
     } finally {
@@ -453,7 +459,16 @@ export function ClientsTab({ d, canRefresh }: { d: DeviceDetail; canRefresh: boo
         )}
       </div>
       {result && !result.ok && <Alert tone="warn">Não foi possível ler agora: {result.message}. Mostrando a última leitura ({timeAgo(clients.wifiUpdatedAt)}).</Alert>}
-      {mesh && <p className="-mt-2 flex items-center gap-1.5 text-xs text-muted"><Info size={13} />Rede mesh com {mesh.nodes.length} roteadores: as listas incluem os aparelhos de todos eles.</p>}
+      {/* Situação da mesh: nunca mostrar só o roteador principal como se fosse a lista completa */}
+      {loading && (
+        <p className="-mt-2 flex items-center gap-1.5 text-xs text-muted">
+          <RefreshCw size={13} className="animate-spin" />
+          Lendo os aparelhos do equipamento{hasMesh ? " e de todos os roteadores da mesh (pode levar alguns segundos)" : ""}. Até terminar, a lista abaixo é a da última leitura.
+        </p>
+      )}
+      {!loading && meshStatus === "ok" && mesh && <p className="-mt-2 flex items-center gap-1.5 text-xs text-muted"><Info size={13} />Rede mesh com {mesh.nodes.length} roteadores: as listas incluem os aparelhos de todos eles.</p>}
+      {!loading && meshStatus === "desatualizada" && mesh && <Alert tone="warn">Não foi possível ler os roteadores da mesh agora: os aparelhos dos {mesh.nodes.length - 1} satélite(s) são da última leitura.</Alert>}
+      {!loading && meshStatus === "falhou" && <Alert tone="warn">Não foi possível ler os roteadores da mesh: <b>a lista pode estar incompleta</b> (só os aparelhos do roteador principal). Tente "Ler agora" ou abra a aba Mesh.</Alert>}
 
       <Card title="Aparelhos no Wi-Fi" actions={<Updated at={clients.wifiUpdatedAt} />}>
         {wifi.some((c) => c.source === "hosts") && (

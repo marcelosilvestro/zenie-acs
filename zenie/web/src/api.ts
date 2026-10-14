@@ -271,6 +271,9 @@ export interface MeshNode {
 }
 
 /** Aparelhos de todos os nós da mesh (aba Clientes). */
+/** Situação da mesh na lista de clientes (GET clients): ver readMeshClients na API. */
+export type MeshListStatus = "ok" | "desatualizada" | "falhou" | "desligada" | "sem-satelites";
+
 export interface MeshClients {
   source: string;
   refreshed: boolean;
